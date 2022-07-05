@@ -2,3 +2,6 @@
 
 - name: Include setup.yml
   ansible.builtin.import_playbook: setup.yaml
+
+- name: Include deploy.yml
+  ansible.builtin.import_playbook: deploy.yaml

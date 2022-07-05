@@ -1,7 +1,17 @@
 - hosts: all
+
+  pre_tasks:
+    - name: Update and upgrade apt packages
+      apt:
+        upgrade: yes
+        update_cache: yes
+        cache_valid_time: 86400
+      become: yes
+
   roles:
     - role: geerlingguy.pip
+      become: yes
 
   tasks:
-    - pip-docker:
+    - pip:
         name: docker

@@ -1,9 +1,21 @@
 - hosts: all
   tasks:
-    - name: Create config file
-      ansible.builtin.template:
-        src: .env.example
+  tasks:
+    - template:
+        src: .env.example.j2
         dest: .env
+      tags: env
+
+    - name: Create a directory for cloud certificate
+      ansible.builtin.file:
+        path: .postgresql
+        state: directory
+
+    - name: Download a cloud certificate
+      ansible.builtin.get_url:
+        url: https://storage.yandexcloud.net/cloud-certs/CA.pem
+        dest: .postgresql/root.crt
+        mode: 0600
 
     - community.docker.docker_container:
         name: redmine

@@ -1,6 +1,5 @@
 - hosts: all
   tasks:
-  tasks:
     - template:
         src: .env.example.j2
         dest: .env

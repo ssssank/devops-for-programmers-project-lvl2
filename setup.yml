@@ -15,3 +15,8 @@
   tasks:
     - pip:
         name: docker
+
+- hosts: webservers
+  roles:
+    - role: datadog.datadog
+      become: yes

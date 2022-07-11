@@ -17,7 +17,8 @@
         dest: .postgresql/root.crt
         mode: 0600
 
-    - community.docker.docker_container:
+    - name: start redmine
+      community.docker.docker_container:
         name: redmine
         image: redmine
         restart_policy: always

@@ -23,5 +23,4 @@
         restart_policy: always
         state: started
         env_file: .env
-        ports:
-          - "{{ app_port }}:3000"
+        ports: "{{ app_port }}:3000"

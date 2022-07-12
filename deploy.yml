@@ -10,6 +10,7 @@
       ansible.builtin.file:
         path: .postgresql
         state: directory
+        mode: 0644
 
     - name: Download a cloud certificate
       ansible.builtin.get_url:

@@ -2,21 +2,22 @@
 
   pre_tasks:
     - name: Update and upgrade apt packages
-      apt:
-        upgrade: yes
+      ansible.builtin.apt:
+        upgrade: true
         update_cache: yes
         cache_valid_time: 86400
-      become: yes
+      become: true
 
   roles:
     - role: geerlingguy.pip
-      become: yes
+      become: true
 
   tasks:
-    - pip:
+    - name: install pip docker
+      ansible.builtin.pip:
         name: docker
 
 - hosts: webservers
   roles:
     - role: datadog.datadog
-      become: yes
+      become: true
